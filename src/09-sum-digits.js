@@ -10,8 +10,20 @@
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getSumOfDigits(/* n */) {
-  throw new Error('Not implemented');
+function recursive(n) {
+  const arr = String(n).split('');
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += parseInt(arr[i], 10);
+  }
+  if (sum >= 10) {
+    return recursive(sum);
+  }
+  return sum;
+}
+
+function getSumOfDigits(n) {
+  return recursive(n);
 }
 
 module.exports = getSumOfDigits;
