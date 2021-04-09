@@ -12,17 +12,27 @@
  *
  * Singly - linked lists are already defined with this interface
  */
+
+function ListNode(x) {
+  this.value = x;
+  this.next = null;
+}
+
 function removeKFromList(l, k) {
-  let prev = null;
+  const first = new ListNode(0);
+  first.next = l;
+  let prev = first;
   let cur = l;
   while (cur.next !== null) {
     if (cur.value === k) {
       prev.next = cur.next;
+      cur = cur.next;
+    } else {
       prev = cur;
       cur = cur.next;
     }
   }
-  return l;
+  return first.next;
 }
 
 module.exports = removeKFromList;
